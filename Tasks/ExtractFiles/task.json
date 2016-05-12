@@ -2,9 +2,9 @@
   "id": "5e1e3830-fbfb-11e5-aab1-090c92bc4988",
   "name": "ExtractFiles",
   "friendlyName": "Extract Files",
-  "description": "Extract files from a variety of archive types, e.g. .zip, .tar, .7z",
+  "description": "Extract a variety of archive and compression files such as .7z, .rar, .tar.gz, and .zip.",
   "author": "Microsoft Corporation",
-  "helpMarkDown": "Replace with markdown to show in help",
+  "helpMarkDown": "",
   "category": "Utility",
   "visibility": [
     "Build",
@@ -16,7 +16,7 @@
     "Minor": "0",
     "Patch": "0"
   },
-  "instanceNameFormat": "Extract Files $(message)",
+  "instanceNameFormat": "Extract files $(message)",
   "inputs": [
     {
       "name": "archiveFilePatterns",
@@ -24,7 +24,11 @@
       "label": "Archive file patterns",
       "defaultValue": "*.zip",
       "required": true,
-      "helpMarkDown": "File paths or patterns of the archive files to extract. Supports multiple lines of minimatch patterns. [More Information](http://go.microsoft.com/fwlink/?LinkID=708389)"
+      "helpMarkDown": "File paths or patterns of the archive files to extract. Supports multiple lines of minimatch patterns.",
+      "properties": {
+          "resizable": "true",
+          "rows" : "4"
+      }
     },
     {
       "name": "destinationFolder",
@@ -32,7 +36,7 @@
       "label": "Destination folder",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Destination folder to extract archives into."
+      "helpMarkDown": "Destination folder into which archive files should be extracted."
     },
     {
       "name": "cleanDestinationFolder",

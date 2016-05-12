@@ -24,7 +24,11 @@
       "label": "ms-resource:loc.input.label.archiveFilePatterns",
       "defaultValue": "*.zip",
       "required": true,
-      "helpMarkDown": "ms-resource:loc.input.help.archiveFilePatterns"
+      "helpMarkDown": "ms-resource:loc.input.help.archiveFilePatterns",
+      "properties": {
+        "resizable": "true",
+        "rows": "4"
+      }
     },
     {
       "name": "destinationFolder",

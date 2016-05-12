@@ -169,6 +169,7 @@ if (!tl.exist(destinationFolder)) {
     tl.mkdirP(destinationFolder);
 }
 
+// This check only pertains to linux where the native unzip command is used instead of 7zip
 function isZip(file) {
     return file.endsWith('.zip')
         || file.endsWith('.jar')
@@ -176,6 +177,7 @@ function isZip(file) {
         || file.endsWith('.ear');
 }
 
+// This check pertains to linux so the native tar command is used, and on windows so the archive is decompressed and untared in two steps using 7zip.
 function isTar(file) {
     var name = win ? file.toLowerCase() : file;
     // standard gnu-tar extension formats with recognized auto compression formats
@@ -290,7 +292,7 @@ for (var i = 0; i < files.length; i++) {
                     failTask('Extraction failed for file: ' + file + ' because temporary location could not be created: ' + tempFolder);
                 }
             }
-        } else { // not a tar
+        } else { // not a tar, so use sevenZip
             sevenZipExtract(file, destinationFolder);
         }
     } else { // not windows
@@ -298,7 +300,7 @@ for (var i = 0; i < files.length; i++) {
             tarExtract(file, destinationFolder);
         } else if(isZip(file)){
             unzipExtract(file, destinationFolder);
-        } else {
+        } else { // fall through and use sevenZip
             sevenZipExtract(file, destinationFolder)
         }
     }
